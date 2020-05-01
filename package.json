@@ -46,7 +46,9 @@
     "license:list": "license-checker . --excludePackages `cat .licenseignore | grep '^[^#;]' | awk 'BEGIN { ORS=\"\" } { print p$0\";\"; } END { print \n }'` --production --csv",
     "license:check": "npm run license:list -- --failOn `cat .licensebanned | grep '^[^#;]' | awk 'BEGIN { ORS=\"\" } { print p$0\";\"; } END { print \n }'`",
     "dep:check": "npx ncu -e 2",
-    "dep:update": "npx ncu -u"
+    "dep:update": "npx ncu -u",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "dependencies": {
     "@hapi/good": "8.2.4",
@@ -64,7 +66,8 @@
     "jsdoc": "3.6.3",
     "mustache": "3.1.0",
     "parse-strings-in-object": "2.0.0",
-    "rc": "1.2.8"
+    "rc": "1.2.8",
+    "snyk": "^1.316.1"
   },
   "devDependencies": {
     "commander": "4.0.1",
@@ -101,5 +104,6 @@
     "exclude": [
       "**/node_modules/**"
     ]
-  }
+  },
+  "snyk": true
 }
